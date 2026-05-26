@@ -7,23 +7,145 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
+    <div id="start-screen">
+        <div id="start-screen-content">
+            <h1>Wolf Hunter FPS</h1>
+            <div id="start-buttons">
+                <button id="start-play-btn" class="start-btn">🎮 Start to Play</button>
+                <button id="sell-btn" class="start-btn">💰 Sell Items</button>
+                <button id="trade-btn" class="start-btn">🤝 Trade</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-container" style="display: none;">
         <canvas id="game-canvas"></canvas>
         <div id="ui">
             <div id="health">Health: 100</div>
             <div id="ammo">Ammo: 30</div>
-            <div id="inventory">
-                <div>Wolf Paws: <span id="paws-count">0</span></div>
-                <div>Wolf Heads: <span id="heads-count">0</span></div>
-                <div>Wolf Pelts: <span id="pelts-count">0</span></div>
-            </div>
+            <div id="coins">Coins: 0</div>
+            <div id="time-display" style="margin-top: 5px; font-weight: bold;">☀️ Day</div>
+            <div id="punch-prompt" style="display: none; margin-top: 5px; color: orange; font-weight: bold;"></div>
+            <div id="damage-display" style="display: none; margin-top: 5px; color: red; font-weight: bold; font-size: 18px;"></div>
             <div id="pickup-prompt" style="display: none; margin-top: 10px; color: yellow; font-weight: bold;"></div>
         </div>
-        <div id="hotbar">
-            <div id="slot-0" class="slot active"><span class="slot-number">1</span></div>
-            <div id="slot-1" class="slot"><span class="slot-number">2</span></div>
-            <div id="slot-2" class="slot"><span class="slot-number">3</span></div>
-            <div id="slot-3" class="slot"><span class="slot-number">4</span></div>
+        <div id="inventory-bar">
+            <div class="slot" id="slot-0">1</div>
+            <div class="slot" id="slot-1">2</div>
+            <div class="slot" id="slot-2">3</div>
+            <div class="slot" id="slot-3">4</div>
+        </div>
+        <div id="equipped-item">Equipped: None</div>
+    </div>
+
+    <div id="crafting-screen" style="display: none;">
+        <div id="crafting-content">
+            <h2>🔨 Crafting</h2>
+            <div id="crafting-items">
+                <div class="crafting-item">
+                    <span>🪓 Axe</span>
+                    <div class="crafting-recipe">
+                        <span>🪵 Wood: 2</span>
+                        <span>🪨 Stone: 2</span>
+                    </div>
+                    <button class="craft-btn" data-recipe="axe">Craft</button>
+                </div>
+                <div class="crafting-item">
+                    <span>🔫 Gun</span>
+                    <div class="crafting-recipe">
+                        <span>🪵 Wood: 3</span>
+                        <span>🪨 Stone: 3</span>
+                    </div>
+                    <button class="craft-btn" data-recipe="gun">Craft</button>
+                </div>
+                <div class="crafting-item">
+                    <span>⛏️ Wooden Pickaxe</span>
+                    <div class="crafting-recipe">
+                        <span>🪵 Wood: 8</span>
+                    </div>
+                    <button class="craft-btn" data-recipe="pickaxe">Craft</button>
+                </div>
+            </div>
+            <button id="back-from-crafting">⬅️ Back</button>
+        </div>
+    </div>
+
+    <div id="pause-screen" style="display: none;">
+        <div id="pause-content">
+            <h2>⏸️ Game Paused</h2>
+            <p>Press Tab again to resume, or choose an option below.</p>
+            <div id="pause-buttons">
+                <button id="in-game-sell-btn" class="start-btn">💰 Sell Items</button>
+                <button id="in-game-trade-btn" class="start-btn">🤝 Trade</button>
+                <button id="in-game-craft-btn" class="start-btn">🔨 Craft</button>
+                <button id="resume-btn" class="start-btn">▶️ Resume</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sell-screen" style="display: none;">
+        <div id="sell-content">
+            <h2>🛒 Sell Items</h2>
+            <div id="sell-items">
+                <div class="sell-item">
+                    <span>Wolf Pelt</span>
+                    <span>10 coins each</span>
+                    <button class="sell-btn" data-item="pelt">Sell</button>
+                </div>
+                <div class="sell-item">
+                    <span>Wolf Paw</span>
+                    <span>5 coins each</span>
+                    <button class="sell-btn" data-item="paw">Sell</button>
+                </div>
+                <div class="sell-item">
+                    <span>Wolf Head</span>
+                    <span>15 coins each</span>
+                    <button class="sell-btn" data-item="head">Sell</button>
+                </div>
+                <div class="sell-item">
+                    <span>Wood</span>
+                    <span>2 coins each</span>
+                    <button class="sell-btn" data-item="wood">Sell</button>
+                </div>
+            </div>
+            <div id="player-coins">Coins: <span id="coin-count">0</span></div>
+            <button id="back-from-sell">⬅️ Back</button>
+        </div>
+    </div>
+
+    <div id="trade-screen" style="display: none;">
+        <div id="trade-content">
+            <h2>🤝 Trade Center</h2>
+            <div id="trade-npcs">
+                <div class="npc-card">
+                    <h3>🏔️ Mountain Trader</h3>
+                    <p>Specializes in rare minerals and enchanted gear</p>
+                    <div class="trade-options">
+                        <div class="trade-item">Crystal Ore → 50 coins</div>
+                        <div class="trade-item">Enchanted Pickaxe → 100 coins</div>
+                        <button class="trade-btn" data-npc="mountain">Trade</button>
+                    </div>
+                </div>
+                <div class="npc-card">
+                    <h3>🌲 Forest Merchant</h3>
+                    <p>Offers potions and herbal remedies</p>
+                    <div class="trade-options">
+                        <div class="trade-item">Health Potion → 30 coins</div>
+                        <div class="trade-item">Speed Elixir → 40 coins</div>
+                        <button class="trade-btn" data-npc="forest">Trade</button>
+                    </div>
+                </div>
+                <div class="npc-card">
+                    <h3>🏜️ Desert Nomad</h3>
+                    <p>Sells exotic spices and desert equipment</p>
+                    <div class="trade-options">
+                        <div class="trade-item">Rare Spice → 25 coins</div>
+                        <div class="trade-item">Sand Boots → 60 coins</div>
+                        <button class="trade-btn" data-npc="desert">Trade</button>
+                    </div>
+                </div>
+            </div>
+            <button id="back-from-trade">⬅️ Back</button>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
