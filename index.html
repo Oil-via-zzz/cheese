@@ -5,16 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TR4CK</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div id="start-screen">
-        <div id="start-screen-content">
+    <div id="start-screen" class="bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-800">
+        <div id="start-screen-content" class="shadow-2xl border border-white/10">
             <h1>TR4CK</h1>
-            <div id="start-buttons">
-                <button id="start-play-btn" class="start-btn">🎮 Start to Play</button>
-                <button id="sell-btn" class="start-btn">💰 Sell Items</button>
-                <button id="trade-btn" class="start-btn">🤝 Trade</button>
+            <div id="start-buttons" class="flex flex-col gap-6 w-full max-w-3xl mx-auto">
+                <button id="start-play-btn" class="start-btn text-4xl font-extrabold py-7 px-10 rounded-[1rem] hover:scale-105">🎮 Start to Play</button>
+                <button id="sell-btn" class="start-btn text-4xl font-extrabold py-7 px-10 rounded-[1rem] hover:scale-105">💰 Sell Items</button>
+                <button id="trade-btn" class="start-btn text-4xl font-extrabold py-7 px-10 rounded-[1rem] hover:scale-105">🤝 Trade</button>
+                <button id="howto-btn" class="start-btn text-4xl font-extrabold py-7 px-10 rounded-[1rem] hover:scale-105">📝 How to Play</button>
             </div>
+        </div>
+    </div>
+
+    <div id="howto-screen" style="display: none;">
+        <div id="howto-content">
+            <h2>📝 How to Play</h2>
+            <ul>
+                <li>Use WASD to move and mouse to look.</li>
+                <li>Press Q to punch or mine when equipped.</li>
+                <li>Press E to pick up nearby items.</li>
+                <li>Press 1-4 to select a hotbar slot and Q to equip it.</li>
+                <li>Press C to open crafting, then craft tools like axe, gun, and pickaxe.</li>
+                <li>Use Sell and Trade to earn coins and buy upgrades.</li>
+            </ul>
+            <button id="back-from-howto">⬅️ Back</button>
         </div>
     </div>
 

@@ -10,11 +10,33 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow: hidden;
+}
+
+.start-tree {
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.start-tree-1 {
+    left: 8%;
+    bottom: 12%;
+}
+
+.start-tree-2 {
+    right: 10%;
+    bottom: 18%;
+}
+
+.start-tree-3 {
+    left: 20%;
+    top: 14%;
 }
 
 #pause-screen {
@@ -50,15 +72,20 @@ body {
 #start-screen-content {
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    background: rgba(15, 23, 42, 0.95);
+    padding: 48px;
+    border-radius: 24px;
+    box-shadow: 0 0 34px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(95, 145, 95, 0.35);
+    width: min(96vw, 920px);
+    max-width: 920px;
+    background-image: linear-gradient(180deg, rgba(28, 52, 28, 0.18), transparent 60%);
 }
 
 #start-screen-content h1 {
     font-size: 3em;
     margin-bottom: 30px;
+    color: #0b3d17;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -66,30 +93,33 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
 .start-btn {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    border: none;
-    border-radius: 10px;
+    width: 100%;
+    padding: 28px 42px;
+    font-size: 1.75em;
+    background: linear-gradient(45deg, #1d3d1f, #2f5e34);
+    border: 2px solid rgba(73, 108, 63, 0.55);
+    border-radius: 22px;
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28);
 }
 
 .start-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+    background: linear-gradient(45deg, #27512a, #3d733f);
 }
 
 .start-btn:active {
     transform: translateY(0);
 }
 
-#sell-screen, #trade-screen, #crafting-screen {
+#sell-screen, #trade-screen, #crafting-screen, #howto-screen {
     position: fixed;
     top: 0;
     left: 0;
@@ -102,13 +132,24 @@ body {
     z-index: 1000;
 }
 
-#sell-content, #trade-content, #crafting-content {
-    background: rgba(0, 0, 0, 0.9);
+#sell-content, #trade-content, #crafting-content, #howto-content {
+    background: rgba(20, 30, 20, 0.95);
     padding: 30px;
     border-radius: 15px;
     color: white;
     max-width: 600px;
     width: 90%;
+}
+
+#howto-content ul {
+    text-align: left;
+    margin: 20px auto;
+    max-width: 520px;
+    line-height: 1.6;
+}
+
+#howto-content ul li {
+    margin-bottom: 10px;
 }
 
 #sell-content h2, #trade-content h2 {

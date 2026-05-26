@@ -1512,6 +1512,11 @@ document.getElementById('trade-btn').addEventListener('click', () => {
     document.getElementById('trade-screen').style.display = 'flex';
 });
 
+document.getElementById('howto-btn').addEventListener('click', () => {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('howto-screen').style.display = 'flex';
+});
+
 document.getElementById('in-game-sell-btn').addEventListener('click', () => {
     closePauseMenu(false);
     document.getElementById('sell-screen').style.display = 'flex';
@@ -1540,6 +1545,11 @@ document.getElementById('back-from-sell').addEventListener('click', () => {
     } else {
         document.getElementById('start-screen').style.display = 'flex';
     }
+});
+
+document.getElementById('back-from-howto').addEventListener('click', () => {
+    document.getElementById('howto-screen').style.display = 'none';
+    document.getElementById('start-screen').style.display = 'flex';
 });
 
 document.getElementById('back-from-trade').addEventListener('click', () => {
