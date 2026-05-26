@@ -87,6 +87,7 @@ body {
     margin-bottom: 30px;
     color: #0b3d17;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-family: "Times New Roman", Times, serif;
 }
 
 #start-buttons {
@@ -117,6 +118,11 @@ body {
 
 .start-btn:active {
     transform: translateY(0);
+}
+
+/* Ensure button text uses a monospace Courier New font */
+button, input[type="button"], .start-btn, .sell-btn, .trade-btn, .craft-btn, #back-from-sell, #back-from-trade, #back-from-crafting {
+    font-family: "Courier New", Courier, monospace;
 }
 
 #sell-screen, #trade-screen, #crafting-screen, #howto-screen {
